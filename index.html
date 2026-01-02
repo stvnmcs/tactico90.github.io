@@ -6,103 +6,128 @@
     <title>TÁCTICO 90</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="image/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Big+Shoulders+Extra+Bold:wght@900&family=Fraunces:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <img src="image/hero.JPEG" alt="Táctico 90 Hero" class="hero-image">
-        <div class="hero-content">
-            <h1 class="headline">TÁCTICO 90</h1>
-            <p class="tagline">The World's City, The World's Game.</p>
-        </div>
-    </section>
+    <!-- Scanline overlay -->
+    <div class="scanlines"></div>
+    <!-- Grain overlay -->
+    <div class="grain"></div>
 
-    <!-- About Section -->
-    <section class="about">
-        <div class="container">
-            <p class="about-text">TÁCTICO 90 is an interdisciplinary studio documenting and celebrating fútbol culture in New York City. We spotlight the city's rich soccer history through photography, video, event planning, and digital tools.</p>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio">
-        <div class="container">
-            <div class="portfolio-grid">
-
-                <!-- Residency -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="image/IMAGE1.JPEG" alt="Residency">
-                    </div>
-                    <h3 class="portfolio-title">Residency</h3>
-                    <p class="portfolio-description">A Wednesday night 2-hour pickup to bring the community out during the cold, dark months.</p>
-                </div>
-
-                <!-- Chopped Cheese Classic -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="image/IMAGE2.JPEG" alt="Chopped Cheese Classic">
-                    </div>
-                    <h3 class="portfolio-title">Chopped Cheese Classic</h3>
-                    <p class="portfolio-description">The first-of-its-kind one-day futbol tournament and block party.</p>
-                </div>
-
-                <!-- Fútbol Diaspora -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="image/IMAGE3.JPEG" alt="Fútbol Diaspora">
-                    </div>
-                    <h3 class="portfolio-title">Fútbol Diaspora</h3>
-                    <p class="portfolio-description">Documenting the fútbol diasporas in New York fandoms far from home.</p>
-                </div>
-
-                <!-- Eleven Football Magazine -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="image/IMAGE4.JPEG" alt="Eleven Football Magazine">
-                    </div>
-                    <h3 class="portfolio-title">Eleven Football Magazine</h3>
-                    <p class="portfolio-description">Early coverage of the first shoe release, commissioned to shoot photos for the magazine.</p>
-                </div>
-
-                <!-- Watch Parties -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="image/IMAGE5.JPEG" alt="Watch Parties">
-                    </div>
-                    <h3 class="portfolio-title">Watch Parties</h3>
-                    <p class="portfolio-description">Hosting live watch events for major games, connecting fans and players alike.</p>
-                </div>
-
-                <!-- Website for the Ground -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="image/IMAGE6.JPEG" alt="Website for the Ground">
-                    </div>
-                    <h3 class="portfolio-title">Website for the Ground</h3>
-                    <p class="portfolio-description">TÁCTICO 90 built the website for the Ground, creating a platform for community and events.</p>
-                </div>
-
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <img src="image/hero.JPEG" alt="Táctico 90 Hero" class="hero-image">
+            <div class="hero-content">
+                <div class="hero-label">New York City</div>
+                <h1 class="headline">TÁCTICO<br>90</h1>
+                <p class="tagline">The World's City, The World's Game.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Bottom Slab Section -->
-    <section class="bottom-slab">
-        <div class="slab-content">
-            <div class="slab-links">
-                <a href="mailto:90tactico@gmail.com" class="slab-link">Email</a>
-                <a href="https://instagram.com/tactico.90" class="slab-link">Instagram</a>
-                <a href="https://www.linkedin.com/company/tactico90/" class="slab-link">LinkedIn</a>
-                <a href="https://www.youtube.com/channel/UCqtuY8BdZCY04gxnOov-S8Q" class="slab-link">YouTube</a>
-                <a href="https://twitter.com/tactico90" class="slab-link">Twitter</a>
+        <!-- About -->
+        <section class="about">
+            <div class="container">
+                <p class="about-text">TÁCTICO 90 is an interdisciplinary studio documenting and celebrating fútbol culture in New York City. We spotlight the city's rich soccer history through photography, video, event planning, and digital tools.</p>
             </div>
-            <div class="slab-brand">
-                <h2 class="slab-title">TÁCTICO</h2>
+        </section>
+
+        <!-- Archive -->
+        <section class="archive">
+            <div class="archive-list">
+                <article class="archive-item">
+                    <div class="archive-meta">CHINATOWN • 2025-PRESENT</div>
+                    <h2 class="archive-title">Residency</h2>
+                    <div class="archive-content">
+                        <div class="archive-image">
+                            <div class="photo-corners"></div>
+                            <img src="image/IMAGE1.JPEG" alt="Residency">
+                        </div>
+                        <p class="archive-description">A Wednesday night 2-hour pickup at theGround to bring the community out during the cold, dark months.</p>
+                    </div>
+                </article>
+
+                <article class="archive-item">
+                    <div class="archive-meta">BROOKLYN • JULY 2025</div>
+                    <h2 class="archive-title">Chopped Cheese Classic</h2>
+                    <div class="archive-content">
+                        <div class="archive-image">
+                            <div class="photo-corners"></div>
+                            <img src="image/IMAGE2.JPEG" alt="Chopped Cheese Classic">
+                        </div>
+                        <p class="archive-description">The first-of-its-kind one-day futbol tournament and block party.</p>
+                    </div>
+                </article>
+
+                <article class="archive-item">
+                    <div class="archive-meta">NYC • YEAR-ROUND</div>
+                    <h2 class="archive-title">Fútbol Diaspora</h2>
+                    <div class="archive-content">
+                        <div class="archive-image">
+                            <div class="photo-corners"></div>
+                            <img src="image/IMAGE3.JPEG" alt="Fútbol Diaspora">
+                        </div>
+                        <p class="archive-description">Documenting the fútbol diasporas in New York fandoms far from home.</p>
+                    </div>
+                </article>
+
+                <article class="archive-item">
+                    <div class="archive-meta">NYC • ISSUE 1</div>
+                    <h2 class="archive-title">Eleven Football Magazine</h2>
+                    <div class="archive-content">
+                        <div class="archive-image">
+                            <div class="photo-corners"></div>
+                            <img src="image/IMAGE4.JPEG" alt="Eleven Football Magazine">
+                        </div>
+                        <p class="archive-description">Early coverage of the first shoe release, commissioned to shoot photos for the magazine.</p>
+                    </div>
+                </article>
+
+                <article class="archive-item">
+                    <div class="archive-meta">VARIOUS LOCATIONS • 2025–PRESENT</div>
+                    <h2 class="archive-title">Watch Parties</h2>
+                    <div class="archive-content">
+                        <div class="archive-image">
+                            <div class="photo-corners"></div>
+                            <img src="image/IMAGE5.JPEG" alt="Watch Parties">
+                        </div>
+                        <p class="archive-description">Hosting live watch events for major games, connecting fans and players alike.</p>
+                    </div>
+                </article>
+
+                <article class="archive-item">
+                    <div class="archive-meta">WASHINGTON HEIGHTS • DEC 2025</div>
+                    <h2 class="archive-title">Toy Drive</h2>
+                    <div class="archive-content">
+                        <div class="archive-image">
+                            <div class="photo-corners"></div>
+                            <img src="image/IMAGE6.JPEG" alt="Toy Drive">
+                        </div>
+                        <p class="archive-description">Annual holiday initiative collecting and distributing gifts for families in Washington Heights. Benefitting the Juan Pablo Duarte Foundation.</p>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <nav class="footer-links">
+                <a href="mailto:90tactico@gmail.com" class="sticker">Email</a>
+                <a href="https://instagram.com/tactico.90" class="sticker sticker-peel">Instagram</a>
+                <a href="https://www.linkedin.com/company/tactico90/" class="sticker">LinkedIn</a>
+                <a href="https://www.youtube.com/channel/UCqtuY8BdZCY04gxnOov-S8Q" class="sticker">YouTube</a>
+                <a href="https://twitter.com/tactico90" class="sticker sticker-tilt">Twitter</a>
+            </nav>
+            <div class="footer-brand">
+                <div class="footer-image">
+                    <img src="image/IMAGE1.JPEG" alt="Tactico Detail">
+                </div>
+                <h2>TÁCTICO 90</h2>
+                <div class="footer-note">EST. 2024 NYC</div>
+            </div>
+        </footer>
+    </main>
 
     <script src="app.js"></script>
 </body>

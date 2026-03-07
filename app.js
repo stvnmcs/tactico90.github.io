@@ -1,155 +1,68 @@
-// TÁCTICO 90 – Field Report Interface
-document.addEventListener('DOMContentLoaded', () => {
-    // Instant appearance with texture
-    document.body.style.opacity = '0'
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease'
-        document.body.style.opacity = '1'
-    }, 50)
+const slides = document.querySelectorAll('.carousel-slide');
+const dotsContainer = document.getElementById('dots');
+const captionEl = document.getElementById('caption');
+const captions = [
+    'Residency · Chinatown',
+    'Chopped Cheese Classic · Brooklyn',
+    'Fútbol Diaspora · NYC',
+    'Eleven Football Magazine · NYC',
+    'Watch Parties · Various',
+    'Toy Drive · Washington Heights'
+];
 
-    // Archive functionality
-    const archiveItems = document.querySelectorAll('.archive-item')
-    let openItem = null
+let current = 0;
+let autoTimer;
 
-    archiveItems.forEach(item => {
-        const title = item.querySelector('.archive-title')
-        const content = item.querySelector('.archive-content')
+// Build dots
+slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+});
 
-        // Initialize closed
-        content.style.maxHeight = '0'
+function goTo(index) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    captionEl.textContent = captions[current];
+}
 
-        title.addEventListener('click', (e) => {
-            e.preventDefault()
+function next() { goTo(current + 1); }
+function prev() { goTo(current - 1); }
 
-            if (openItem === item) {
-                // Close current
-                content.style.maxHeight = '0'
-                item.classList.remove('open')
-                openItem = null
-                
-                // Reset hover effect
-                title.style.transform = ''
-            } else {
-                // Close previous
-                if (openItem) {
-                    const prevContent = openItem.querySelector('.archive-content')
-                    prevContent.style.maxHeight = '0'
-                    openItem.classList.remove('open')
-                    const prevTitle = openItem.querySelector('.archive-title')
-                    prevTitle.style.transform = ''
-                }
+document.getElementById('next').addEventListener('click', () => {
+    clearInterval(autoTimer);
+    next();
+    autoTimer = setInterval(next, 4000);
+});
 
-                // Open new with mechanical feel
-                content.style.maxHeight = content.scrollHeight + 'px'
-                item.classList.add('open')
-                openItem = item
-                title.style.transform = 'translateY(-2px)'
+document.getElementById('prev').addEventListener('click', () => {
+    clearInterval(autoTimer);
+    prev();
+    autoTimer = setInterval(next, 4000);
+});
 
-                // Scroll into view with offset
-                setTimeout(() => {
-                    const rect = item.getBoundingClientRect()
-                    const offset = 150
-                    const scrollPos = window.scrollY + rect.top - offset
-                    
-                    window.scrollTo({
-                        top: scrollPos,
-                        behavior: 'smooth'
-                    })
-                }, 100)
-            }
-        })
+autoTimer = setInterval(next, 4000);
 
-        // Mechanical hover effect
-        title.addEventListener('mouseenter', () => {
-            if (openItem !== item) {
-                title.style.transform = 'translateY(-2px)'
-            }
-        })
+// Dynamic footer year
+document.getElementById('footer-year').textContent =
+    '© ' + new Date().getFullYear() + ' Táctico 90 · New York City';
 
-        title.addEventListener('mouseleave', () => {
-            if (openItem !== item) {
-                title.style.transform = ''
-            }
-        })
-    })
+// Mobile nav toggle
+const menuToggle = document.getElementById('menu-toggle');
+const mobileNav = document.getElementById('mobile-nav');
 
-    // Footer appearance on scroll
-    const footer = document.querySelector('.footer')
-    if (footer) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    footer.classList.add('visible')
-                    observer.unobserve(footer)
-                }
-            })
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        })
+menuToggle.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+    menuToggle.textContent = mobileNav.classList.contains('open') ? 'Close' : 'Menu';
+});
 
-        observer.observe(footer)
-    }
-
-    // Close archive on click outside
-    document.addEventListener('click', (e) => {
-        if (openItem && !openItem.contains(e.target)) {
-            const content = openItem.querySelector('.archive-content')
-            content.style.maxHeight = '0'
-            openItem.classList.remove('open')
-            const title = openItem.querySelector('.archive-title')
-            title.style.transform = ''
-            openItem = null
-        }
-    })
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && openItem) {
-            const content = openItem.querySelector('.archive-content')
-            content.style.maxHeight = '0'
-            openItem.classList.remove('open')
-            const title = openItem.querySelector('.archive-title')
-            title.style.transform = ''
-            openItem = null
-        }
-    })
-
-    // Add glitch effect to hero headline on hover
-    const headline = document.querySelector('.headline')
-    if (headline) {
-        headline.addEventListener('mouseenter', () => {
-            headline.style.transform = 'translateX(2px)'
-            setTimeout(() => {
-                headline.style.transform = 'translateX(-1px)'
-                setTimeout(() => {
-                    headline.style.transform = ''
-                }, 50)
-            }, 50)
-        })
-    }
-
-    // Add subtle sticker shuffle on footer links hover
-    const stickers = document.querySelectorAll('.sticker')
-    stickers.forEach(sticker => {
-        sticker.addEventListener('mouseenter', () => {
-            // Slight shuffle effect on neighboring stickers
-            stickers.forEach(s => {
-                if (s !== sticker) {
-                    const currentRotate = s.style.transform.match(/rotate\(([^)]+)\)/)
-                    const baseRotate = s.classList.contains('sticker-tilt') ? -1 : 0
-                    const newRotate = baseRotate + (Math.random() * 0.5 - 0.25)
-                    s.style.transform = s.style.transform.replace(/rotate\([^)]*\)/, '') + ` rotate(${newRotate}deg)`
-                }
-            })
-        })
-
-        sticker.addEventListener('mouseleave', () => {
-            // Reset rotations
-            stickers.forEach(s => {
-                const baseRotate = s.classList.contains('sticker-tilt') ? -1 : 0
-                s.style.transform = s.style.transform.replace(/rotate\([^)]*\)/, '') + ` rotate(${baseRotate}deg)`
-            })
-        })
-    })
-})
+mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        menuToggle.textContent = 'Menu';
+    });
+});
